@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>宜山一中 · ZSC定制</title>
+  <meta name="description" content="宜山一中官网 - 学校简介、办学历程、校园建设与荣誉展示" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ----------- 全局重置与优化 ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* ----------- 颜色、字体等基本样式 ---------- */
+    :root {
+      --bg: #0a1628;
+      --bg-secondary: #0f1d32;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.06);
+      --accent: #06d6d0;
+      --accent-light: #20e3db;
+      --accent-dark: #00a699;
+      --muted: #9aa6b2;
+      --text-primary: #e6eef3;
+      --text-secondary: #b0b8c1;
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-lg: 20px;
+      --glass-blur: 12px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    body {
+      font-family: "PingFang SC", "Microsoft Yahei", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0a1628 0%, #0f1d32 50%, #0d1a2e 100%);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      padding: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 100%;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    
+    /* ----- Header ----- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      padding: 20px 0;
+      position: relative;
+      z-index: 100;
+    }
+    
+    .brand {
+      display: flex;
+      gap: 15px;
+      text-decoration: none;
+      color: inherit;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .brand:hover {
+      transform: translateY(-2px);
+    }
+    
+    .logo {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--accent), #06d6d0);
+      color: #022;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 28px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(6, 214, 208, 0.2);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    .brand h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+    
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    /* ----- Navigation ----- */
+    nav.desktop-nav {
+      display: none;
+      gap: 32px;
+    }
+    
+    .desktop-nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .desktop-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .desktop-nav a:hover {
+      color: var(--accent);
+    }
+    
+    .desktop-nav a:hover::after {
+      width: 100%;
+    }
+    
+    .hamburger {
+      width: 50px;
+      height: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--card-bg);
+      border-radius: 12px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hamburger:hover {
+      background: var(--card-bg-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .hamburger div {
+      width: 24px;
+      height: 2.5px;
+      background: white;
+      margin: 4px;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    
+    .hamburger.open div:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+    
+    .hamburger.open div:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.open div:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+    
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: rgba(15, 29, 50, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 16px 0;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      animation: slideDown 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .mobile-nav a {
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .mobile-nav a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: rgba(6, 214, 208, 0.08);
+    }
+    
+    /* ----- Hero Slider ----- */
+    .hero {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+    }
+    
+    .slides {
+      display: flex;
+      width: 300%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .slide:hover img {
+      transform: scale(1.05);
+    }
+    
+    .hero-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      padding: 40px 30px 30px;
+      backdrop-filter: blur(6px);
+    }
+    
+    .hero-caption > div:first-child {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    
+    .hero-caption > div:nth-child(2) {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 20px;
+    }
+    
+    .slide-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .dot:hover {
+      background: rgba(255, 255, 255, 0.6);
+      transform: scale(1.2);
+    }
+    
+    .dot.active {
+      background: var(--accent);
+      width: 32px;
+      border-radius: 6px;
+    }
+    
+    /* ----- Cards ----- */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .card:hover {
+      background: var(--card-bg-hover);
+      border-color: rgba(6, 214, 208, 0.2);
+      box-shadow: 0 8px 32px rgba(6, 214, 208, 0.1);
+    }
+    
+    h2.section-title {
+      margin: 0 0 24px;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    
+    p.lead {
+      color: var(--text-secondary);
+      font-size: 18px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .card p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    
+    /* ----- Timeline ----- */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      position: relative;
+      padding-left: 24px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      border-radius: 4px;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 16px;
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 4px solid var(--bg-secondary);
+      box-shadow: 0 0 12px rgba(6, 214, 208, 0.3);
+    }
+    
+    .timeline-body h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    .timeline-body p {
+      margin: 0;
+      font-size: 16px;
+      color: var(--muted);
+    }
+    
+    /* ----- Stats ----- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+    
+    .stat {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(6, 214, 208, 0.05), rgba(6, 214, 208, 0.02));
+      padding: 24px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(6, 214, 208, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .stat:hover {
+      background: linear-gradient(135deg, rgba(6, 214, 208, 0.1), rgba(6, 214, 208, 0.05));
+      border-color: rgba(6, 214, 208, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(6, 214, 208, 0.1);
+    }
+    
+    .stat h4 {
+      font-size: 32px;
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    
+    .stat p {
+      font-size: 16px;
+      margin: 0;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    /* ----- Lists ----- */
+    ul, ol {
+      list-style: none;
+      margin: 20px 0;
+    }
+    
+    ul li, ol li {
+      padding: 12px 0 12px 32px;
+      position: relative;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      transition: all 0.3s ease;
+    }
+    
+    ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    
+    ul li:hover {
+      color: var(--text-primary);
+      padding-left: 40px;
+    }
+    
+    ul li:hover::before {
+      transform: translateX(8px);
+    }
+    
+    ol {
+      counter-reset: step-counter;
+    }
+    
+    ol li {
+      padding-left: 48px;
+      counter-increment: step-counter;
+    }
+    
+    ol li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 8px;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    /* ----- Gallery ----- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+    
+    .gallery img {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      height: 240px;
+      object-fit: cover;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    
+    /* ------ Footer ------ */
+    footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border-radius: 2px;
+    }
+    
+    footer p {
+      margin: 0;
+      transition: color 0.3s ease;
+    }
+    
+    footer p:hover {
+      color: var(--accent);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0;
+      }
+      
+      body {
+        padding: 12px;
+      }
+      
+      header {
+        margin-bottom: 24px;
+        padding: 12px 0;
+      }
+      
+      .logo {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+      }
+      
+      .brand h1 {
+        font-size: 18px;
+      }
+      
+      .brand p {
+        font-size: 12px;
+      }
+      
+      .card {
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+      
+      h2.section-title {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+      
+      p.lead {
+        font-size: 16px;
+      }
+      
+      .hero {
+        margin-bottom: 24px;
+        border-radius: 16px;
+      }
+      
+      .slide img {
+        height: 280px;
+      }
+      
+      .hero-caption {
+        padding: 24px 20px 16px;
+      }
+      
+      .hero-caption > div:first-child {
+        font-size: 20px;
+      }
+      
+      .hero-caption > div:nth-child(2) {
+        font-size: 14px;
+      }
+      
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .stat h4 {
+        font-size: 24px;
+      }
+      
+      .stat p {
+        font-size: 14px;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .gallery img {
+        height: 180px;
+      }
+      
+      .timeline-item {
+        gap: 16px;
+        padding-left: 20px;
+      }
+      
+      .timeline-item::after {
+        left: -10px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+    
+    /* Desktop Layout */
+    @media (min-width: 992px) {
+      nav.desktop-nav {
+        display: flex;
+      }
+      
+      .hamburger {
+        display: none;
+      }
+      
+      .mobile-nav {
+        display: none !important;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .gallery img {
+        height: 200px;
+      }
+      
+      .stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* 选中文本样式 */
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-light);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <header>
+    <a class="brand" href="#">
+      <div class="logo">宜中</div>
+      <div>
+        <h1>宜山一中 / ZSC定制官网</h1>
+        <p>苍南县宜山镇第一中学</p>
+      </div>
+    </a>
+    <nav class="desktop-nav">
+      <a href="#about">学校简介</a>
+      <a href="#history">发展历程</a>
+      <a href="#projects">校建工程</a>
+      <a href="#honors">荣誉</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+  
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about">学校简介</a>
+    <a href="#history">发展历程</a>
+    <a href="#projects">校建工程</a>
+    <a href="#honors">荣誉</a>
+    <a href="#contact">联系我们</a>
+  </div>
+  
+  <!-- Hero Slider -->
+  <section class="hero">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <img src="校门.jpg" alt="学校校门">
+      </div>
+      <div class="slide">
+        <img src="校园风景.jpg" alt="校园风景">
+      </div>
+      <div class="slide">
+        <img src="校园空中预览.jpg" alt="校园空中预览">
+      </div>
+    </div>
+    <div class="hero-caption">
+      <div>宜山一中（苍南县宜山镇第一中学）</div>
+      <div>始于 1988 · 区域基础教育的重要力量</div>
+      <div class="slide-controls" id="dots">
+        <div class="dot active" data-i="0"></div>
+        <div class="dot" data-i="1"></div>
+        <div class="dot" data-i="2"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- School About -->
+  <section class="card" id="about">
+    <h2 class="section-title">学校简介</h2>
+    <p class="lead">宜山一中创办于1988年，是苍南县规模较大的初级中学之一，长期致力于提升教育质量与区域教育均衡发展。</p>
+    <p>
+      学校在历史上经历多次校区扩张、功能分化、独立办学过程。2002年原宜山二中并入，形成南北两个校区；2022年南校区继续使用"宜山一中"，北校区更名为"宜山实验中学"。学校拥有现代化的教学设施、雄厚的师资力量和优良的校风学风，致力于培养德智体美劳全面发展的社会主义建设者和接班人。
+    </p>
+    <div class="stats">
+      <div class="stat">
+        <h4>1988</h4>
+        <p>学校创办</p>
+      </div>
+      <div class="stat">
+        <h4>2002</h4>
+        <p>校区扩张</p>
+      </div>
+      <div class="stat">
+        <h4>2022</h4>
+        <p>独立办学</p>
+      </div>
+      <div class="stat">
+        <h4>3000万</h4>
+        <p>投资规模</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Honors -->
+  <section class="card" id="honors">
+    <h2 class="section-title">教育成果与荣誉</h2>
+    <p class="lead">学校凭优秀教学质量获得多项荣誉，赢得良好社会声誉：</p>
+    <ul>
+      <li>浙江省示范性初级中学</li>
+      <li>温州市初中英语学科教研基地</li>
+      <li>浙江省中小学合唱节一等奖</li>
+      <li>温州市初中羽毛球团体冠军</li>
+      <li>苍南县文明校园</li>
+      <li>温州市教学成果奖先进学校</li>
+    </ul>
+  </section>
+  
+  <!-- Timeline -->
+  <section class="card" id="history">
+    <h2 class="section-title">发展历程</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-body">
+          <h3>1988 · 创办初期</h3>
+          <p>成立"苍南县宜山镇中学"，承担镇内初中教育任务，初具规模。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-body">
+          <h3>2002 · 校区扩张</h3>
+          <p>原宜山二中并入，形成南北两个校区，学校规模和办学能力得到显著提升。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-body">
+          <h3>2022 · 独立办学</h3>
+          <p>南校区保留"宜山一中"，北校区更名为"宜山实验中学"，实现独立法人办学。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-body">
+          <h3>2024 · 转型升级</h3>
+          <p>完成校园硬件改造，教学设施现代化，为全面发展奠定坚实基础。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects -->
+  <section class="card" id="projects">
+    <h2 class="section-title">校建工程与投资</h2>
+    <p class="lead">学校当前正投入大量资源提升校园设施，总投资约 3000 万元。</p>
+    <ol>
+      <li><strong>南校区食堂 + 风雨操场建设</strong> - 投资 1370 万，满足师生日常需求，建设现代化体育设施</li>
+      <li><strong>北校区综合楼改扩建</strong> - 投资 1280 万，提升教学楼功能和校园整体环境</li>
+      <li><strong>开学前硬件提升工程</strong> - 投资 350 万，确保教学设备先进，环境优美</li>
+    </ol>
+  </section>
+  
+  <!-- Gallery -->
+  <section class="card">
+    <h2 class="section-title">校园风采</h2>
+    <p class="lead">感受宜山一中的校园魅力与发展成就</p>
+    <div class="gallery">
+      <img src="校园风景.jpg" alt="校园风景">
+      <img src="校园风景2.jpg" alt="校园风景2">
+      <img src="校门.jpg" alt="学校校门">
+      <img src="校园空中预览.jpg" alt="校园空中预览">
+    </div>
+  </section>
+  
+  <!-- Contact -->
+  <section class="card" id="contact">
+    <h2 class="section-title">联系我们</h2>
+    <p class="lead">欢迎光临宜山一中，共同见证教育的力量</p>
+    <p><strong>📍 学校地址：</strong>浙江省温州市苍南县宜山镇</p>
+    <p><strong>💬 QQ交流群：</strong>1059199838</p>
+    <p><strong>📱 输入QQ群号加入：</strong>进入官方群聊了解最新动态</p>
+  </section>
+  
+  <footer>
+    <p>© ZSC定制 · 版权所有 | 宜山一中官网</p>
+  </footer>
+</div>
+
+<script>
+  // 移动端菜单切换
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+  });
+  
+  // 点击链接后关闭菜单
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.style.display = 'none';
+    });
+  });
+  
+  // 图片轮播
+  const slides = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
+  let currentIndex = 0;
+  
+  function showSlide(index) {
+    currentIndex = (index + 3) % 3;
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
+  }
+  
+  // 点击指示点切换幻灯片
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      showSlide(Number(dot.dataset.i));
+    });
+  });
+  
+  // 自动轮播（4秒）
+  setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 4000);
+  
+  // 键盘导航
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+    if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  });
+</script>
+</body>
+</html>
